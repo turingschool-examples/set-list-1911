@@ -8,6 +8,8 @@ RSpec.describe Song, type: :model do
   end
 
   describe "relationships" do
+    it {should have_many :playlist_songs}
+    it {should have_many(:playlists).through(:playlist_songs)}
     it {should belong_to :artist}
   end
 
