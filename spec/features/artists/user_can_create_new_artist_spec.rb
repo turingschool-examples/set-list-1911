@@ -15,5 +15,14 @@ RSpec.describe 'As a visitor', type: :feature do
       expect(current_path).to eq('/artists')
       expect(page).to have_content('Meg')
     end
+
+    it 'cannot create an artist without a name' do
+      visit '/artists/new'
+
+      click_on 'Create Artist'
+
+      expect(page).to have_content('Artist not created: Required info missing')
+      expect(page).to have_button('Create Artist')
+    end
   end
 end
