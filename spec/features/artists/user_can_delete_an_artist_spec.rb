@@ -6,11 +6,12 @@ RSpec.describe 'as a visitor', type: :feature do
       taytay = Artist.create(name: 'Taylor Swift')
 
       visit '/artists'
+      expect(page).to have_css("#artist-#{taytay.id}")
 
       click_button 'Delete'
 
       expect(current_path).to eq('/artists')
-      expect(page).to_not have_content('Taylor Swift')
+      expect(page).to_not have_css("#artist-#{taytay.id}")
     end
   end
 

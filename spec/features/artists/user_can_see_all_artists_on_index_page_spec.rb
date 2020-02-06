@@ -8,8 +8,21 @@ RSpec.describe 'as a visitor', type: :feature do
 
       visit '/artists'
 
-      expect(page).to have_content(artist_1.name)
-      expect(page).to have_content(artist_2.name)
+      within "#artist-#{artist_1.id}" do
+        expect(page).to have_content(artist_1.name)
+        expect(page).to have_link("Edit")
+        expect(page).to have_button("Delete")
+      end
+
+      within "#artist-#{artist_2.id}" do
+        expect(page).to have_content(artist_2.name)
+        expect(page).to have_link("Edit")
+        click_button("Delete")
+      end
+
+      expect(current_path).to eq("/artists")
+      expect(page).to_not have_content(artist_2.name)
+
     end
   end
 end
