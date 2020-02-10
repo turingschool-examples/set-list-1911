@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   patch '/artists/:id', to: 'artists#update'
   get '/playlists', to: 'playlists#index'
   post '/artists/:id/songs', to: 'songs#create'
+  patch '/cart/:song_id', to: 'cart#update'
 end
