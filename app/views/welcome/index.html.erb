@@ -1,0 +1,11 @@
+<h1>SET LIST NA NA NA SET LIST</h1>
+
+<% if current_user %>
+  <%= link_to "Log Out" %>
+<% else %>
+  <p><%= link_to "Register as a User", "/users/new" %></p>
+
+  <p><%= link_to "I already have an account", "/login" %></p>
+
+<% end %>
+
