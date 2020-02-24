@@ -21,4 +21,6 @@ Rails.application.routes.draw do
   scope :admin, module: :admin, as: :admin do
     get '/dashboard', to: 'dashboard#index'
   end
+
+  resources :artist_songs
 end
